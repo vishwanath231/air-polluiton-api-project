@@ -1,13 +1,18 @@
 // DOM'S ELEMENT
 const city = document.getElementById('city');
 const weatherDiv = document.getElementById('weather');
+const windDiv = document.getElementById('wind');
 const air__pollution = document.getElementById('air__pollution');
 
 
 const details__container = document.getElementById('details__container');
-const img__container = document.getElementById('img__container');
+// const img__container = document.getElementById('img__container');
+
+const API_KEY = "219583af9b85a1bacc250d5387a12ddd";
 
 
+const locations = document.getElementById('location');
+const search__form = document.getElementById('search__form');
 
 
 const latitude = document.getElementById('latitude');
@@ -18,7 +23,7 @@ const form = document.getElementById('form');
 form.addEventListener('submit', formSubmit)
 
 details__container.classList.add('active')
-img__container.classList.add('active')
+// img__container.classList.add('active')
 
 
 // FORM SUBMIT
@@ -31,10 +36,10 @@ function formSubmit(e){
 
     if (!latitude.value || !longitude.value) {
         details__container.classList.add('active')
-        img__container.classList.add('active')
+        // img__container.classList.add('active')
     }else {
         details__container.classList.remove('active')
-        img__container.classList.remove('active')
+        // img__container.classList.remove('active')
     }
 
     weather(latitudeVal, longitudeVal)
@@ -50,15 +55,30 @@ function formSubmit(e){
 // WEATHER DETAILS
 function weather(lat, lon){
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=219583af9b85a1bacc250d5387a12ddd`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
     .then(res => res.json())
     .then(data => {
 
         
+        
+        const cor = data.coord
+        
         city.innerHTML = `
-            <h2>Location Details</h2>
-            <div><span>city:</span> ${data.name}</div>
+        <h2>Location Details</h2>
+        <div><span>City:</span> ${data.name}</div>
+        <div><span>Latitude:</span> ${cor.lat}</div>
+        <div><span>Longitude:</span> ${cor.lon}</div>
         `;
+        
+
+        const wind = data.wind
+
+        windDiv.innerHTML = `
+            <h2>Wind Details</h2>
+            <div><span>Deg:</span> ${wind.deg}</div>
+            <div><span>Gust:</span> ${wind.gust}</div>
+            <div><span>Speed:</span> ${wind.speed}</div>
+        `
 
         const mainDetails = data.main
 
@@ -79,7 +99,7 @@ function weather(lat, lon){
 // AIR POLLUTION DETAILS
 function airPollution(lat, lon){
 
-    fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=219583af9b85a1bacc250d5387a12ddd`)
+    fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
     .then(res => res.json())
     .then(data => {
         const datas = data.list
@@ -116,7 +136,40 @@ function airPollution(lat, lon){
 
 
 
+search__form.addEventListener('submit', searchFormSubmit);
+
+function searchFormSubmit(e) {
+
+    e.preventDefault()
+
+    const locationInput = locations.value;
+
+    if (!locations.value) {
+        details__container.classList.add('active')
+        // img__container.classList.add('active')
+    }else {
+        details__container.classList.remove('active')
+        // img__container.classList.remove('active')
+    }
+
+    searchDetails(locationInput)
+    locations.value = "";
+}
 
 
+function searchDetails(val){
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${API_KEY}`)
+    .then(res => res.json())
+    .then(data => {
+        const coord = data.coord;
+
+        
+
+        weather(coord.lat, coord.lon)
+        airPollution(coord.lat, coord.lon)
+    })
+
+}
 
 
