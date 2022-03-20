@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Pollution</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="shortcut icon" href="./assets/icon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+   
+    <div class="container">
+        <div class="title">air pollution</div>
+        
+        <div class="box">
+
+            <form id="form" class="form">
+                <div class="form__div">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" placeholder="latitude" id="latitude" required>
+                </div>
+                <div class="form__div">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" placeholder="longitude" id="longitude" required>
+                </div>
+                <button type="submit" id="submit">Get Location</button>
+
+                <div class="img__container" id="img__container">
+                    <img src="./assets/img/img.png" alt="" class="img">
+                </div>
+            </form>
+
+
+        
+            <div class="details__container" id="details__container">
+                <div class="city" id="city"></div>
+                <div class="weather" id="weather"></div>
+                <div class="air__pollution" id="air__pollution"></div>
+            </div>
+
+        </div>
+    </div>
+
+   
+
+
+    <script src="./assets/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
+
+:root{
+    --sen-font: 'Sen', sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--sen-font);
+    background: #f3f3f3;
+}
+
+input, button {
+    font-family: var(--sen-font);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 2rem 0 1.5rem 0;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form {
+    width: 100%;
+    padding: 1rem;
+}
+
+
+
+.form__div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.3rem;
+    width: 100%;
+}
+
+.form__div label {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: .3rem;
+}
+
+.form__div input {
+    width: 100%;
+    padding: .7rem 1rem;
+    border-radius: 3px;
+    outline-color: cornflowerblue;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid #dbdbdb;
+}
+
+.form button {
+    width: 100%;
+    padding: .7rem 1rem;
+    border-radius: 3px;
+    outline-color: cornflowerblue;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: cornflowerblue;
+    color: #fff;
+    border: 1px solid cornflowerblue;
+    cursor: pointer;
+}
+
+
+.details__container{
+    width: 100%;
+    padding: 1rem;
+}
+
+.city,
+.weather,
+.air__pollution {
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    border-radius: 6px;
+}
+
+.city,
+.weather {
+    margin-bottom: 1.5rem;
+}
+
+.city h2,
+.weather h2,
+.air__pollution h2 {
+   font-size: 1.4rem;
+   font-weight: 500; 
+   color: #219ebc;
+   margin-bottom: 1rem;
+}
+
+.city div,
+.weather div,
+.air__pollution div {
+    margin-top: .6rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.city span,
+.weather span,
+.air__pollution span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: gray;
+}
+
+.img__container {
+    text-align: center;
+    margin: 1.8rem 0 1rem 0;
+}
+.img {
+    width: 43%;
+}
+
+.details__container.active,
+.img__container.active{
+    display: none;
+
+}
+
+
+.details__container,
+.img__container {
+    display: block;
+}
+
+
+
+@media(min-width:768px){
+    .box {
+        flex-direction: row;
+    }
+    
+}
+
+@media(max-width:768px){
+    .img__container{
+        display: none;
+    }
+    .img__container.active{
+        display: none;
+    }
+    
+}
