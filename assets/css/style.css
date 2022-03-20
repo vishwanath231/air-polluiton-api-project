@@ -29,7 +29,7 @@ input, button {
     font-size: 1.8rem;
     text-transform: uppercase;
     font-weight: 600;
-    margin: 2rem 0 1.5rem 0;
+    margin: 2rem 0 3rem 0;
 }
 
 .box {
@@ -39,8 +39,16 @@ input, button {
     justify-content: space-between;
 }
 
-.form {
+.form__container {
     width: 100%;
+}
+
+.form {
+   
+    padding: 1rem;
+}
+
+.search__form {
     padding: 1rem;
 }
 
@@ -69,7 +77,8 @@ input, button {
     border: 1px solid #dbdbdb;
 }
 
-.form button {
+.form button,
+.search__form button {
     width: 100%;
     padding: .7rem 1rem;
     border-radius: 3px;
@@ -90,19 +99,21 @@ input, button {
 
 .city,
 .weather,
+.wind,
 .air__pollution {
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     border-radius: 6px;
 }
 
-.city,
+/* .city,
 .weather {
     margin-bottom: 1.5rem;
-}
+} */
 
 .city h2,
 .weather h2,
+.wind h2,
 .air__pollution h2 {
    font-size: 1.4rem;
    font-weight: 500; 
@@ -112,6 +123,7 @@ input, button {
 
 .city div,
 .weather div,
+.wind div,
 .air__pollution div {
     margin-top: .6rem;
     font-size: 1.2rem;
@@ -119,6 +131,7 @@ input, button {
 }
 .city span,
 .weather span,
+.wind span,
 .air__pollution span {
     font-size: 1.2rem;
     font-weight: 500;
@@ -146,10 +159,26 @@ input, button {
 }
 
 
+.details__container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 2em;
+}
+
+
+
 
 @media(min-width:768px){
     .box {
         flex-direction: row;
+    }
+    
+}
+
+@media(min-width:1029px){
+
+    .details__container {
+        grid-template-columns: repeat(2, 1fr);
     }
     
 }
